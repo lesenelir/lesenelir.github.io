@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lesenelir.github.io/</id>
     <title>Lesenelir</title>
-    <updated>2020-07-08T14:18:21.078Z</updated>
+    <updated>2020-07-08T14:33:26.942Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lesenelir.github.io/"/>
     <link rel="self" href="https://lesenelir.github.io/atom.xml"/>
@@ -10,6 +10,197 @@
     <logo>https://lesenelir.github.io/images/avatar.png</logo>
     <icon>https://lesenelir.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Lesenelir</rights>
+    <entry>
+        <title type="html"><![CDATA[Search Algorithm]]></title>
+        <id>https://lesenelir.github.io/post/search-algorithm/</id>
+        <link href="https://lesenelir.github.io/post/search-algorithm/">
+        </link>
+        <updated>2020-07-08T04:18:26.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="1线性搜索">1.线性搜索</h1>
+<h3 id="概述">概述</h3>
+<p>从数组头开始顺次访问各元素，检查元素是否与目标值相等。</p>
+<h3 id="线性搜索问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_A">线性搜索问题描述</a></h3>
+<h3 id="代码实现">代码实现</h3>
+<pre><code class="language-C++">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+const int maxn = 10010;
+int S[maxn];
+int T[maxn];
+
+bool lineSearch(int S[], int n, int key) {
+	bool flag = false;
+	for (int i = 0; i &lt; n; i++) {
+		if (S[i] == key) {
+			flag = true;
+			break;
+		}
+	}
+	return flag;
+}
+
+int main() {
+	int n;
+	scanf(&quot;%d&quot;, &amp;n);
+	for (int i = 0; i &lt; n; i++) {
+		scanf(&quot;%d&quot;, &amp;S[i]);
+	}
+	int q;
+	scanf(&quot;%d&quot;, &amp;q);
+	for (int i = 0; i &lt; q; i++) {
+		scanf(&quot;%d&quot;, &amp;T[i]);
+	}
+	int count = 0;
+	for (int i = 0; i &lt; q; i++) {
+		if (lineSearch(S, n, T[i]) == true) count++;
+	}
+	printf(&quot;%d\n&quot;, count);
+	return 0;
+}
+</code></pre>
+<h3 id="算法解析">算法解析</h3>
+<p>ineSearch()函数是查询数组S中是否含有key的值。</p>
+<blockquote>
+<p>线性搜索一般来说都是用for循环来处理，算法复杂度为O(n)</p>
+</blockquote>
+<h1 id="2二分搜索">2.二分搜索</h1>
+<h3 id="概述-2">概述</h3>
+<p>二分搜索首先针对的是有序的序列，其次是检索范围正中央的元素，最后看关键字位于正中央元素的哪侧。</p>
+<h3 id="二分搜索问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B">二分搜索问题描述</a></h3>
+<h3 id="代码实现-2">代码实现</h3>
+<pre><code class="language-C++">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+const int maxn = 100010;
+int S[maxn];
+int T[maxn];
+int n;
+
+int binarySearch(int key) {
+	int left = 0;
+	int right = n;
+	int mid;
+	while (left &lt; right) {
+		mid = (left + right) / 2;
+		if (key == S[mid]) return 1;
+		if (key &gt; S[mid]) left = mid + 1;
+		else if (key &lt; S[mid]) right = mid;
+	}
+	return 0;
+}
+
+int main() {
+	scanf(&quot;%d&quot;, &amp;n);
+	for (int i = 0; i &lt; n; i++) {
+		scanf(&quot;%d&quot;, &amp;S[i]);
+	}
+	int q;
+	scanf(&quot;%d&quot;, &amp;q);
+	for (int i = 0; i &lt; q; i++) {
+		scanf(&quot;%d&quot;, &amp;T[i]);
+	}
+	int count = 0;
+	for (int i = 0; i &lt; q; i++) {
+		if (binarySearch(T[i]) == 1) count++;
+	}
+	printf(&quot;%d\n&quot;, count);
+	return 0;
+}
+</code></pre>
+<h3 id="算法解析-2">算法解析</h3>
+<p>binarySearch()是二分搜索的模版</p>
+<blockquote>
+<p>对于搜索查找问题，都可以使用二分搜索算法来解决。<br>
+但使用二分查找时，需要对数据进行排序，一般来说进行初等排序算法来解决。若要考虑数据体积，则需要用高等排序算法。<br>
+二分搜索算法的算法复杂度为O(logn)</p>
+</blockquote>
+<h1 id="3散列法">3.散列法</h1>
+<h3 id="概述-3">概述</h3>
+<p>各元素的存储保存在散列表中，元素的存储位置由散列函数决定，只需把元素的关键值代入特定的函数就可以找出对应的位置。</p>
+<h3 id="散列法问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_C">散列法问题描述</a></h3>
+<pre><code class="language-C++">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+
+#define M 1046527
+#define NLL (-1)
+#define L 14
+#define ll long long int
+
+char H[M][L];
+
+//char 转 int
+int getChar(char ch) {
+	if (ch == 'A') return 1;
+	else if (ch == 'C') return 2;
+	else if (ch == 'G') return 3;
+	else if (ch == 'T') return 4;
+	else return 0;
+}
+
+//str 转int 并生成 key
+ll getKey(char str[]) {
+	ll sum = 0, p = 1,i;
+	for(i = 0; i &lt; strlen(str); i++) {
+		sum += p * (getChar(str[i]));
+		p *= 5;
+	}
+	return sum;
+}
+
+int h1(int key) { return key % M; }
+int h2(int key) { return 1 + (key % (M-1));}
+
+int Find(char str[]) {
+	ll key,i,h;
+	key = getKey(str);
+	for (i = 0; ; i++) {
+		h = (h1(key) + i * h2(key)) % M;
+		if (strcmp(H[h], str) == 0) return 1;
+		else if (strlen(H[h]) == 0) return 0;
+	}
+	return 0;
+}
+
+int Insert(char str[]) {
+	ll key,i,h;
+	key = getKey(str);
+	for (i = 0; ; i++) {
+		h = (h1(key) + i*h2(key)) % M;
+		if (strcmp(H[h], str) == 0) return 1;
+		else if (strlen(H[h]) == 0) {
+			strcpy(H[h],str);
+			return 0;
+		}
+	}
+	return 0;
+}
+
+int main() {
+	int i,n,h;
+	char str[L],com[9];
+	for (i = 0; i &lt; M; i++) {
+		H[i][0]= '\0';
+	}
+	scanf(&quot;%d&quot;,&amp;n);
+	for (i = 0; i &lt; n; i++) {
+		scanf(&quot;%s %s&quot;, com, str);
+		if (com[0] == 'i') {
+			Insert(str);
+		} else {
+			if (Find(str)) {
+				printf(&quot;yes\n&quot;);
+			} else printf(&quot;no\n&quot;);
+		}
+	}
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Basic Sorting Algorithm]]></title>
         <id>https://lesenelir.github.io/post/basic-sorting-algorithm/</id>
