@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8" />
@@ -45,38 +45,10 @@
                                 })();
                             </script>
                             
-        <script src="//cdn.jsdelivr.net/gh/tangkaichuan/gridea-search/lib/fuse.js"></script>
-        <script src="//cdn.jsdelivr.net/gh/tangkaichuan/gridea-search/lib/ejs.min.js"></script>
-        <script src="//cdn.jsdelivr.net/gh/tangkaichuan/gridea-search/lib/gridea-search.min.js"></script>
-        <script src="//cdn.jsdelivr.net/gh/tangkaichuan/gridea-search/example/assets/media/gridea-search/result-template.ejs" type="text/ejs"></script>
-        <style>
-            .main_ {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                height: 90vh;
-            }
-            
-            .result-box {
-                margin-top: 50px;
-                display: flex;
-                border-radius: 5px;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        </style>
 </head>
 
 <body>
-    <style>
-        .searched-keyword {
-            background-color: green;
-        }
-    </style>
-    <div class="main_">
+    <div class="wrapper">
         <header>
     <nav class="navbar">
         <div class="container">
@@ -199,15 +171,111 @@
 
     }
 </script>
-            <div class="result-box">
-                <div id="gridea-search-result">
-                    <p class="searching">搜索中......</p>
-                    <p class="no-result" style="display:none">未搜索到相关文章</p>
+            <div class="main">
+                <div class="container">
+                    <article class="post-wrap">
+                        <header class="post-header">
+                            <h1 class="post-title">
+                                Timeline
+                            </h1>
+                            
+                                <!--en-->
+                                <div class="post-meta en">
+                                    Author:
+                                    <a itemprop="author" rel="author" href="/">
+                                        Lesenelir
+                                    </a>
+                                    <span class="post-time">
+                                Date: <a href="#">2020-06-08</a>
+                            </span>
+                                    <span class="post-readtime">Reading Time:<a
+                                    href="#">0.3
+                                    mins</a></span>
+                                    <span class="post-words">words:<a href="#">43</a></span>
+                                    
+                                </div>
+                                
+                        </header>
+                        
+                        <div class="post-content">
+                            <h2 id="timeline">TIMELINE</h2>
+<h3 id="prehistoric">Prehistoric</h3>
+<ul>
+<li>Lost at the starting line</li>
+</ul>
+<h3 id="2019">2019</h3>
+<ul>
+<li>Graduated from a LOL University</li>
+<li>Traveling in Hong Kong in June</li>
+<li>Prepare for the Graduate Entrance Examination from August to December</li>
+</ul>
+<h3 id="2020">2020</h3>
+<ul>
+<li>Gap at home from January to June, during this period accompanied by coronavirus</li>
+</ul>
+
+                        </div>
+                        
+                                
+                                    
+                                        <!--en-->
+                                        <section class="post-copyright en">
+                                            <p class="copyright-item">
+                                                <span>Author:</span>
+                                                <span>Lesenelir</span>
+                                            </p>
+
+                                            <p class="copyright-item">
+                                                <span>Permalink:</span>
+                                                <span><a href="https://lesenelir.github.io/post/timeline/">https://lesenelir.github.io/post/timeline/</a></span>
+                                            </p>
+
+                                            <p class="copyright-item">
+                                                <span>License:</span>
+                                                <span>MIT License</span>
+                                            </p>
+                                        </section>
+                                        
+                                                
+                                                    
+                                                        <!-- Share-->
+                                                        <span style="margin-right:15px">
+                                                    <i class="post-share"></i>
+                                                    <span>Share:</span>
+                                                        <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lesenelir.github.io/post/timeline/"><i class="fa fa-qrcode"></i></a>
+                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lesenelir.github.io/post/timeline/&sharesource=qzone&title=Timeline&pics=https://lesenelir.github.io//images/avatar.png?v=1594217870242&summary="><i class="fa fa-qq"></i></a>
+                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://lesenelir.github.io/post/timeline/&sharesource=weibo&title=Timeline + " - " + &pic="https://lesenelir.github.io//images/avatar.png?v=1594217870242 "><i class="fa fa-weibo "></i></a>
+                                                        
+                                                                </span>
+                                                                <!--en-->
+                                                                <section class="post-tags en ">
+                                                                    <div>
+                                                                        <span>Tag(s):</span>
+                                                                        <span class="tag ">
+                        
+                                                            </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <a href="javascript:window.history.back();">back</a>
+                                                                        <span>&dot;</span>
+                                                                        <a href="#">home</a>
+                                                                    </div>
+                                                                </section>
+                                                                
+                                                                                <!---->
+                                                                                <section class="post-nav">
+                                                                                    
+                                                                                            
+                                                                                </section>
+                    </article>
                 </div>
+                
+                                            
             </div>
     </div>
-</body>
-
+    </div>
+    </div>
+    
         <footer id="footer" class="footer">
             <div class="copyright">
                 
@@ -291,3 +359,10 @@
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>
                 
+        </div>
+</body>
+<script>
+    scroll();
+</script>
+
+</html>

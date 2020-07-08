@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8" />
@@ -45,38 +45,10 @@
                                 })();
                             </script>
                             
-        <script src="//cdn.jsdelivr.net/gh/tangkaichuan/gridea-search/lib/fuse.js"></script>
-        <script src="//cdn.jsdelivr.net/gh/tangkaichuan/gridea-search/lib/ejs.min.js"></script>
-        <script src="//cdn.jsdelivr.net/gh/tangkaichuan/gridea-search/lib/gridea-search.min.js"></script>
-        <script src="//cdn.jsdelivr.net/gh/tangkaichuan/gridea-search/example/assets/media/gridea-search/result-template.ejs" type="text/ejs"></script>
-        <style>
-            .main_ {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                height: 90vh;
-            }
-            
-            .result-box {
-                margin-top: 50px;
-                display: flex;
-                border-radius: 5px;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        </style>
 </head>
 
 <body>
-    <style>
-        .searched-keyword {
-            background-color: green;
-        }
-    </style>
-    <div class="main_">
+    <div class="wrapper">
         <header>
     <nav class="navbar">
         <div class="container">
@@ -199,15 +171,279 @@
 
     }
 </script>
-            <div class="result-box">
-                <div id="gridea-search-result">
-                    <p class="searching">搜索中......</p>
-                    <p class="no-result" style="display:none">未搜索到相关文章</p>
+            <div class="main">
+                <div class="container">
+                    <article class="post-wrap">
+                        <header class="post-header">
+                            <h1 class="post-title">
+                                Basic Sorting Algorithm
+                            </h1>
+                            
+                                <!--en-->
+                                <div class="post-meta en">
+                                    Author:
+                                    <a itemprop="author" rel="author" href="/">
+                                        Lesenelir
+                                    </a>
+                                    <span class="post-time">
+                                Date: <a href="#">2020-07-03</a>
+                            </span>
+                                    <span class="post-readtime">Reading Time:<a
+                                    href="#">4.2
+                                    mins</a></span>
+                                    <span class="post-words">words:<a href="#">879</a></span>
+                                    
+                                        <span class="post-category">
+                                Category:
+                                
+                                <a href="https://lesenelir.github.io/tag/DOoQsvsid/">Data Structure and Algorithm</a>
+                                
+                            </span>
+                                        
+                                </div>
+                                
+                        </header>
+                        
+                        <div class="post-content">
+                            <h1 id="1初等排序">1.初等排序</h1>
+<h3 id="概述">概述</h3>
+<p>一般来说数据都是一张具有多个属性的表，所谓的排序就是以按照某种特定的属性为基准，这个特定属性就是排序键。</p>
+<h3 id="准则">准则</h3>
+<ul>
+<li>复杂度</li>
+<li>稳定性</li>
+</ul>
+<blockquote>
+<p>所谓的稳定性是指：当有多个键值相等时，排序先后顺序按照输入的先后顺序。</p>
+</blockquote>
+<h1 id="2插入排序">2.插入排序</h1>
+<h3 id="插入排序问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_A">插入排序问题描述</a></h3>
+<h3 id="代码实现">代码实现</h3>
+<pre><code class="language-C++">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+const int maxn = 10010;
+int A[maxn];
+
+void trace(int A[], int n) {
+	for (int i = 0; i &lt; n; i++) {
+		if (i &gt; 0) printf(&quot; &quot;);
+		printf(&quot;%d&quot;, A[i]);
+	}
+	printf(&quot;\n&quot;);
+}
+
+void insertionSort(int A[], int n) {
+	for (int i = 1; i &lt; n; i++) {
+		int temp = A[i];
+		int j = i - 1; // j从i往前枚举
+		while (j &gt;= 0 &amp;&amp; A[j] &gt; temp) {
+			A[j+1] = A[j];
+			j--;
+		}
+		A[j+1] = temp;
+		trace(A, n);
+	}
+}
+
+int main() {
+	int n;
+	while (scanf(&quot;%d&quot;, &amp;n) != EOF) {
+		for (int i = 0; i &lt; n; i++) {
+			scanf(&quot;%d&quot;, &amp;A[i]);
+		}	
+		trace(A, n);
+		insertionSort(A, n);
+	}
+	
+	return 0;
+}
+
+</code></pre>
+<h3 id="算法解析">算法解析</h3>
+<p>外层循环i从1开始自增，每次循环的A[i]值保存在变量temp中。<br>
+内存循环j从前往后枚举，找到比temp大的元素并依次后移，循环结束将temp插入j+1位置。</p>
+<blockquote>
+<p>插入排序不相邻的元素不会直接交换位置，所以插入排序是稳定排序。<br>
+插入排序的算法复杂度是O(n^2).<br>
+插入排序适用于相对有序的数据</p>
+</blockquote>
+<h1 id="3冒泡排序">3.冒泡排序</h1>
+<h3 id="冒泡排序问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_2_A">冒泡排序问题描述</a></h3>
+<h3 id="代码实现-2">代码实现</h3>
+<pre><code class="language-C++">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+const int maxn = 10010;
+int A[maxn];
+
+int bubbleSort(int A[], int n) {
+	int count = 0;
+	bool flag = true;
+	for (int i = 0; flag; i++) {
+		flag = false;
+		for (int j = n-1; j &gt;= i+1; j--) {
+			if (A[j] &lt; A[j-1]) {
+				swap(A[j], A[j-1]);
+				flag = true;
+				count++;
+			}
+		}
+	}
+	return count;
+}
+
+
+int main() {
+	int n;
+	while (scanf(&quot;%d&quot;, &amp;n) != EOF) {
+		for (int i = 0; i &lt; n; i++) {
+			scanf(&quot;%d&quot;, &amp;A[i]);
+		}	
+		int res = bubbleSort(A, n);
+		for (int i = 0; i &lt; n; i++) {
+			if (i &gt; 0) printf(&quot; &quot;);
+			printf(&quot;%d&quot;, A[i]);
+		}
+		printf(&quot;\n&quot;);
+		printf(&quot;%d\n&quot;, res);
+	}
+	return 0;
+}
+</code></pre>
+<h3 id="算法解析-2">算法解析</h3>
+<p>外层循环i表示未排序的开头元素，从开头向末尾移动。<br>
+内存循环j表示相邻元素之间两两比较。</p>
+<blockquote>
+<p>冒泡排序是稳定的排序算法，但如果把条件判断改为A[j] &lt;= A[j-1]，则此时是不稳定算法。<br>
+冒泡排序的算法复杂度是O(n^2).<br>
+冒泡排序当中的交换次数又称为反序数或逆序数（线性代数），体现的是数组的错乱程度。</p>
+</blockquote>
+<h1 id="4选择排序">4.选择排序</h1>
+<h3 id="选择排序问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_2_B">选择排序问题描述</a></h3>
+<h3 id="代码实现-3">代码实现</h3>
+<pre><code class="language-C++">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+const int maxn = 10010;
+int A[maxn];
+
+int selectSort(int A[], int n) {
+	int count = 0;
+	int temp;
+	for (int i = 0; i &lt; n-1; i++) {
+		int k = i;
+		for (int j = i; j &lt; n; j++) {
+			if (A[j] &lt; A[k]) {
+				k = j;
+			}
+		}
+		temp = A[i];
+		A[i] = A[k];
+		A[k] = temp;
+		if (i != k) count++;
+	}
+	return count;
+}
+
+
+
+int main() {
+	int n;
+	while (scanf(&quot;%d&quot;, &amp;n) != EOF) {
+		for (int i = 0; i &lt; n; i++) {
+			scanf(&quot;%d&quot;, &amp;A[i]);
+		}	
+		int res = selectSort(A, n);
+		for (int i = 0; i &lt; n; i++) {
+			if (i &gt; 0) printf(&quot; &quot;);
+			printf(&quot;%d&quot;, A[i]);
+		}
+		printf(&quot;\n&quot;);
+		printf(&quot;%d\n&quot;, res);
+		
+	}
+	return 0;
+}
+</code></pre>
+<h3 id="算法解析-3">算法解析</h3>
+<p>外层循环i遍历数组。<br>
+内层循环j遍历从i开始的未排好序的序列，从这个序列中找出最小值，并交换元素。</p>
+<blockquote>
+<p>冒泡排序从局部入手减少逆序数，选择排序放眼大局逐个选择最小值。</p>
+</blockquote>
+
+                        </div>
+                        
+                                
+                                    
+                                        <!--en-->
+                                        <section class="post-copyright en">
+                                            <p class="copyright-item">
+                                                <span>Author:</span>
+                                                <span>Lesenelir</span>
+                                            </p>
+
+                                            <p class="copyright-item">
+                                                <span>Permalink:</span>
+                                                <span><a href="https://lesenelir.github.io/post/basic-sorting-algorithm/">https://lesenelir.github.io/post/basic-sorting-algorithm/</a></span>
+                                            </p>
+
+                                            <p class="copyright-item">
+                                                <span>License:</span>
+                                                <span>MIT License</span>
+                                            </p>
+                                        </section>
+                                        
+                                                
+                                                    
+                                                        <!-- Share-->
+                                                        <span style="margin-right:15px">
+                                                    <i class="post-share"></i>
+                                                    <span>Share:</span>
+                                                        <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lesenelir.github.io/post/basic-sorting-algorithm/"><i class="fa fa-qrcode"></i></a>
+                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lesenelir.github.io/post/basic-sorting-algorithm/&sharesource=qzone&title=Basic Sorting Algorithm&pics=https://lesenelir.github.io//images/avatar.png?v=1594217870242&summary="><i class="fa fa-qq"></i></a>
+                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://lesenelir.github.io/post/basic-sorting-algorithm/&sharesource=weibo&title=Basic Sorting Algorithm + " - " + &pic="https://lesenelir.github.io//images/avatar.png?v=1594217870242 "><i class="fa fa-weibo "></i></a>
+                                                        
+                                                                </span>
+                                                                <!--en-->
+                                                                <section class="post-tags en ">
+                                                                    <div>
+                                                                        <span>Tag(s):</span>
+                                                                        <span class="tag ">
+                        
+                        
+                        <a href="https://lesenelir.github.io/tag/DOoQsvsid/">#
+                                                Data Structure and Algorithm
+                                                    </a>
+                                                    
+                                                        
+                                                            </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <a href="javascript:window.history.back();">back</a>
+                                                                        <span>&dot;</span>
+                                                                        <a href="#">home</a>
+                                                                    </div>
+                                                                </section>
+                                                                
+                                                                                <!---->
+                                                                                <section class="post-nav">
+                                                                                    
+                                                                                            
+                                                                                </section>
+                    </article>
                 </div>
+                
+                                            
             </div>
     </div>
-</body>
-
+    </div>
+    </div>
+    
         <footer id="footer" class="footer">
             <div class="copyright">
                 
@@ -291,3 +527,10 @@
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>
                 
+        </div>
+</body>
+<script>
+    scroll();
+</script>
+
+</html>
