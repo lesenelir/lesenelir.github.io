@@ -90,7 +90,7 @@
                         <input id="switch_default" type="checkbox" class="switch_default">
                         <label for="switch_default" class="toggleBtn"></label>
             </div>
-            <form id="gridea-search-form" data-update="1594274690347" action="/search/index.html">
+            <form id="gridea-search-form" data-update="1594275773588" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
             </form>
         </div>
@@ -109,7 +109,7 @@
                         <!--zh-->
                         <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
                     </div>
-                    <form id="gridea-search-form" data-update="1594274690347" action="/search/index.html">
+                    <form id="gridea-search-form" data-update="1594275773588" action="/search/index.html">
                         <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
                     </form>
                     <!--en-->
@@ -249,8 +249,8 @@
                                                     <i class="post-share"></i>
                                                     <span>Share:</span>
                                                         <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lesenelir.github.io/post/about/"><i class="fa fa-qrcode"></i></a>
-                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lesenelir.github.io/post/about/&sharesource=qzone&title=About&pics=https://lesenelir.github.io//images/avatar.png?v=1594274690347&summary="><i class="fa fa-qq"></i></a>
-                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://lesenelir.github.io/post/about/&sharesource=weibo&title=About + " - " + &pic="https://lesenelir.github.io//images/avatar.png?v=1594274690347 "><i class="fa fa-weibo "></i></a>
+                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lesenelir.github.io/post/about/&sharesource=qzone&title=About&pics=https://lesenelir.github.io//images/avatar.png?v=1594275773588&summary="><i class="fa fa-qq"></i></a>
+                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://lesenelir.github.io/post/about/&sharesource=weibo&title=About + " - " + &pic="https://lesenelir.github.io//images/avatar.png?v=1594275773588 "><i class="fa fa-weibo "></i></a>
                                                         
                                                                 </span>
 
@@ -286,10 +286,7 @@
                                             
             </div>
 
-    <!--Leancloud 操作库:-->
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <!--Valine 的核心代码库-->
-    <script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
 
 <style>
     #vcomments{
@@ -331,21 +328,77 @@
     }
 </style>
 
-<div class="vcomments"></div>
 
+<div id="vcomments"></div>
 <script>
     new Valine({
-        // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
-        av: AV, 
-        el: 'vcomments',
-          lang: 'zh-cn',//设置评论语言
-        emoticon_url: 'https://cloud.panjunwen.com/alu',
-  emoticon_list: ["狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","暗地观察.png"],
-  app_id: 'LGzlhcuLTS0QfcxIlRpFoVsO-gzGzoHsz',
-  app_key: 'KmIHDkBz0TtNsA3ji7CENsLc',
-  placeholder: 'leave a message～'
+        el: '#vcomments',
+        appId: 'LGzlhcuLTS0QfcxIlRpFoVsO-gzGzoHsz',
+        appKey: 'KmIHDkBz0TtNsA3ji7CENsLc',
+        pageSize: 10,
+        avatar: 'mp',
+        placeholder: 'leave a message～',
+        visitor: true,
+        highlight: true,
+        recordIP: true,
+        visitor: true,
+        enableQQ: true,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/Sanarous/files@1.17/emojis/',
+        emojiMaps: {
+                "huaji":"oldtieba/滑稽.png","yinxian":"oldtieba/阴险.png","tushe":"oldtieba/吐舌.png","huaxin":"oldtieba/花心.png","shengqi":"oldtieba/生气.png","zhenbang":"oldtieba/真棒.png","xiaoyan":"oldtieba/笑眼.png","kaixin":"oldtieba/开心.png",
+                                        "jingku":"oldtieba/惊哭.png","ku":"oldtieba/酷.png","kuanghan":"oldtieba/狂汗.png","lei":"oldtieba/泪.png","jingya":"oldtieba/惊讶.png","tu":"oldtieba/吐.png","yi":"oldtieba/咦.png","yiwen":"oldtieba/疑问.png","leng":"oldtieba/冷.png","mianqiang":"oldtieba/勉强.png",
+                                         "qian":"oldtieba/钱.png","qianbi":"oldtieba/钱币.png","nu":"oldtieba/怒.png","pen":"oldtieba/喷.png","shuijiao":"oldtieba/睡觉.png","taikaixin":"oldtieba/太开心.png","weiqu":"oldtieba/委屈.png","zhenbang":"oldtieba/真棒.png","meigui":"oldtieba/玫瑰.png","shengli":"oldtieba/胜利.png",
+                                         "qq_1":"qq/呲牙.gif","qq_2":"qq/大哭.gif","qq_3":"qq/得意.gif","qq_4":"qq/发呆.gif","qq_5":"qq/尴尬.gif","qq_6":"qq/鼓掌.gif","qq_7":"qq/哈欠.gif","qq_8":"qq/憨笑.gif","qq_9":"qq/害羞.gif","qq_10":"qq/坏笑.gif","qq_11":"qq/饥饿.gif","qq_12":"qq/惊恐.gif","qq_13":"qq/惊讶.gif",
+                                         "qq_14":"qq/可爱.gif","qq_15":"qq/可怜.gif","qq_16":"qq/抠鼻.gif","qq_17":"qq/酷.gif","qq_18":"qq/快哭了.gif","qq_19":"qq/困.gif","qq_20":"qq/冷汗.gif",
+                                         "qq_21":"qq/流汗.gif","qq_22":"qq/流泪.gif","qq_23":"qq/难过.gif","qq_24":"qq/撇嘴.gif","qq_25":"qq/亲亲.gif","qq_26":"qq/睡.gif","qq_27":"qq/调皮.gif","qq_28":"qq/太阳.gif","qq_29":"qq/偷笑.gif","qq_30":"qq/偷笑.gif",
+                                         "qq_31":"qq/吐.gif","qq_32":"qq/偷笑.gif","qq_33":"qq/吐.gif","qq_34":"qq/微笑.gif","qq_35":"qq/委屈.gif","qq_36":"qq/吓.gif","qq_37":"qq/嗅大了.gif","qq_38":"qq/嘘.gif","qq_39":"qq/疑问.gif","qq_40":"qq/阴险.gif",
+                                         "qq_41":"qq/右哼哼.gif","qq_42":"qq/晕.gif","qq_43":"qq/再见.gif","qq_44":"qq/折磨.gif","qq_45":"qq/咒骂.gif","qq_46":"qq/猪头.gif","qq_47":"qq/抓狂.gif","qq_48":"qq/左哼哼.gif","qq_49":"qq/握手.gif","qq_50":"qq/强.gif","qq_51":"qq/胜利.gif",
+                                        "sina_1": "sina/sina_1.png", "sina_2": "sina/sina_2.png", "sina_3": "sina/sina_3.png", "sina_4": "sina/sina_4.png", "sina_5": "sina/sina_5.png", "sina_6": "sina/sina_6.png",
+                                        "sina_7": "sina/sina_7.png", "sina_8": "sina/sina_8.png", "sina_9": "sina/sina_9.png", "sina_10": "sina/sina_10.png", "sina_11": "sina/sina_11.png", "sina_12": "sina/sina_12.png", "sina_13": "sina/sina_13.png",
+                                        "sina_14": "sina/sina_14.png", "sina_15": "sina/sina_15.png", "sina_16": "sina/sina_16.png", "sina_17": "sina/sina_17.png", "sina_18": "sina/sina_18.png", "sina_19": "sina/sina_19.png",
+                                        "sina_20": "sina/sina_20.png", "sina_21": "sina/sina_21.png", "sina_22": "sina/sina_22.png", "sina_23": "sina/sina_23.png", "sina_24": "sina/sina_24.png", "sina_25": "sina/sina_25.png",
+                                        "sina_26": "sina/sina_26.png", "sina_27": "sina/sina_27.png", "sina_28": "sina/sina_28.png", "sina_29": "sina/sina_29.png", "sina_30": "sina/sina_30.png", "sina_31": "sina/sina_31.png",
+                                        "sina_32": "sina/sina_32.png", "sina_33": "sina/sina_33.png", "sina_34": "sina/sina_34.png", "sina_35": "sina/sina_35.png", "sina_36": "sina/sina_36.png", "sina_37": "sina/sina_37.png",
+                                        "sina_38": "sina/sina_38.png", "sina_39": "sina/sina_39.png", "sina_40": "sina/sina_40.png", "sina_41": "sina/sina_41.png", "sina_42": "sina/sina_42.png", "sina_43": "sina/sina_43.png",
+                                        "sina_44": "sina/sina_44.png", "sina_45": "sina/sina_45.png",
+                                        "bili_1":"bilibili/bili_1.png", "bili_2":"bilibili/bili_2.png", "bili_3":"bilibili/bili_3.png", "bili_4":"bilibili/bili_4.png", "bili_5":"bilibili/bili_5.png", "bili_6":"bilibili/bili_6.png",
+                                        "bili_7":"bilibili/bili_7.png", "bili_8":"bilibili/bili_8.png", "bili_9":"bilibili/bili_9.png", "bili_10":"bilibili/bili_10.png", "bili_11":"bilibili/bili_11.png", "bili_12":"bilibili/bili_12.png",
+                                        "bili_13":"bilibili/bili_13.png", "bili_14":"bilibili/bili_14.png", "bili_15":"bilibili/bili_15.png", "bili_16":"bilibili/bili_16.png", "bili_17":"bilibili/bili_17.png", "bili_18":"bilibili/bili_18.png",
+                                        "bili_19":"bilibili/bili_19.png", "bili_20":"bilibili/bili_20.png", "bili_21":"bilibili/bili_21.png", "bili_22":"bilibili/bili_22.png", "bili_23":"bilibili/bili_23.png", "bili_24":"bilibili/bili_24.png",
+                                        "bili_25":"bilibili/bili_25.png", "bili_26":"bilibili/bili_26.png", "bili_27":"bilibili/bili_27.png", "bili_28":"bilibili/bili_28.png", "bili_29":"bilibili/bili_29.png", "bili_30":"bilibili/bili_30.png",
+                                        "bili_31":"bilibili/bili_31.png", "bili_32":"bilibili/bili_32.png", "bili_33":"bilibili/bili_33.png", "bili_34":"bilibili/bili_34.png", "bili_35":"bilibili/bili_35.png", "bili_36":"bilibili/bili_36.png",
+                                        "bili_37":"bilibili/bili_37.png", "bili_38":"bilibili/bili_38.png", "bili_39":"bilibili/bili_39.png", "bili_40":"bilibili/bili_40.png", "bili_41":"bilibili/bili_41.png", "bili_42":"bilibili/bili_42.png",
+                                        "bili_43":"bilibili/bili_43.png", "bili_44":"bilibili/bili_44.png", "bili_45":"bilibili/bili_45.png", "bili_46":"bilibili/bili_46.png", "bili_47":"bilibili/bili_47.png", "bili_48":"bilibili/bili_48.png",
+                                        "bili_49":"bilibili/bili_49.png", "bili_50":"bilibili/bili_50.png",
+                                        "kt_1":"aru/1.png","kt_2":"aru/2.png","kt_3":"aru/3.png","kt_4":"aru/4.png","kt_5":"aru/5.png","kt_6":"aru/6.png","kt_7":"aru/7.png","kt_8":"aru/8.png","kt_9":"aru/9.png","kt_10":"aru/10.png","kt_11":"aru/11.png",
+                                        "kt_12":"aru/12.png","kt_13":"aru/13.png","kt_14":"aru/14.png","kt_15":"aru/15.png","kt_16":"aru/16.png","kt_17":"aru/17.png","kt_18":"aru/18.png","kt_19":"aru/19.png","kt_20":"aru/20.png","kt_21":"aru/21.png","kt_22":"aru/22.png",
+                                        "kt_23":"aru/23.png","kt_24":"aru/24.png","kt_25":"aru/25.png","kt_26":"aru/26.png","kt_27":"aru/27.png","kt_28":"aru/28.png","kt_29":"aru/29.png","kt_30":"aru/30.png","kt_31":"aru/31.png","kt_32":"aru/32.png","kt_33":"aru/33.png",
+                                        "kt_34":"aru/34.png","kt_35":"aru/35.png","kt_36":"aru/36.png","kt_37":"aru/37.png","kt_38":"aru/38.png","kt_39":"aru/39.png","kt_40":"aru/40.png","kt_41":"aru/41.png","kt_42":"aru/42.png","kt_43":"aru/43.png","kt_44":"aru/44.png",
+                                        "kt_45":"aru/45.png","kt_46":"aru/46.png","kt_47":"aru/47.png","kt_48":"aru/48.png","kt_49":"aru/49.png","kt_50":"aru/50.png","kt_51":"aru/51.png","kt_52":"aru/52.png","kt_53":"aru/53.png","kt_54":"aru/54.png","kt_55":"aru/55.png","kt_56":"aru/56.png",
+                                        "kt_57":"aru/57.png", "kt_58":"aru/58.png", "kt_59":"aru/59.png", "kt_60":"aru/60.png", "kt_61":"aru/61.png", "kt_62":"aru/62.png", "kt_63":"aru/63.png", "kt_64":"aru/64.png", "kt_65":"aru/65.png", "kt_66":"aru/66.png",
+                                        "kt_67":"aru/67.png", "kt_68":"aru/68.png", "kt_69":"aru/69.png", "kt_70":"aru/70.png", "kt_71":"aru/71.png", "kt_72":"aru/72.png", "kt_73":"aru/73.png", "kt_74":"aru/74.png", "kt_75":"aru/75.png", "kt_76":"aru/76.png",
+                                        "kt_77":"aru/77.png", "kt_78":"aru/78.png", "kt_79":"aru/79.png", "kt_80":"aru/80.png", "kt_81":"aru/81.png", "kt_82":"aru/82.png", "kt_83":"aru/83.png", "kt_84":"aru/84.png", "kt_85":"aru/85.png", "kt_86":"aru/86.png",
+                                        "kt_87":"aru/87.png", "kt_88":"aru/88.png", "kt_89":"aru/89.png", "kt_90":"aru/90.png", "kt_91":"aru/91.png", "kt_92":"aru/92.png", "kt_93":"aru/93.png", "kt_94":"aru/94.png", "kt_95":"aru/95.png", "kt_96":"aru/96.png",
+                                        "kt_97":"aru/97.png", "kt_98":"aru/98.png", "kt_99":"aru/99.png", "kt_100":"aru/100.png", "kt_101":"aru/101.png", "kt_102":"aru/102.png", "kt_103":"aru/103.png", "kt_104":"aru/104.png", "kt_105":"aru/105.png",
+                                        "kt_106":"aru/106.png", "kt_107":"aru/107.png", "kt_108":"aru/108.png", "kt_109":"aru/109.png", "kt_110":"aru/110.png", "kt_111":"aru/111.png", "kt_112":"aru/112.png", "kt_113":"aru/113.png", "kt_114":"aru/114.png",
+                                        "kt_115":"aru/115.png","kt_116":"aru/116.png","kt_117":"aru/117.png","kt_118":"aru/118.png","kt_119":"aru/119.png","kt_120":"aru/120.png","kt_121":"aru/121.png","kt_122":"aru/122.png","kt_123":"aru/123.png","kt_124":"aru/124.png",
+                                        "kt_125":"aru/125.png","kt_126":"aru/126.png","kt_127":"aru/127.png","kt_128":"aru/128.png","kt_129":"aru/129.png","kt_130":"aru/130.png","kt_131":"aru/131.png","kt_132":"aru/132.png","kt_133":"aru/133.png","kt_134":"aru/134.png",
+                                        "kt_135":"aru/135.png","kt_136":"aru/136.png","kt_137":"aru/137.png","kt_138":"aru/138.png","kt_139":"aru/139.png","kt_140":"aru/140.png","kt_141":"aru/141.png","kt_142":"aru/142.png","kt_143":"aru/143.png","kt_144":"aru/144.png",
+                                        "kt_145":"aru/145.png","kt_146":"aru/146.png","kt_147":"aru/147.png","kt_148":"aru/148.png","kt_149":"aru/149.png",
+                                        "kt_150":"aru/150.png", "kt_151":"aru/151.png", "kt_152":"aru/152.png", "kt_153":"aru/153.png", "kt_154":"aru/154.png", "kt_155":"aru/155.png", "kt_156":"aru/156.png", "1kt_57":"aru/157.png", "kt_158":"aru/158.png",
+                                        "kt_159":"aru/159.png", "kt_160":"aru/160.png", "kt_161":"aru/161.png", "kt_162":"aru/162.png", "kt_163":"aru/163.png", "kt_164":"aru/164.png",
+                
+            }
     });
-</script>  
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
 
 
 
@@ -433,7 +486,7 @@
                     CheckVersion();
                     
                     var newDate = new Date();
-                    newDate.setTime(1594274690347);
+                    newDate.setTime(1594275773588);
                     console.log(" Blog Update Time: " + newDate.toLocaleDateString());
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>
