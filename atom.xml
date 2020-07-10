@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lesenelir.github.io/</id>
     <title>Lesenelir</title>
-    <updated>2020-07-10T03:25:53.733Z</updated>
+    <updated>2020-07-10T05:24:17.787Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lesenelir.github.io/"/>
     <link rel="self" href="https://lesenelir.github.io/atom.xml"/>
@@ -26,6 +26,57 @@
         </link>
         <updated>2020-07-09T04:46:28.000Z</updated>
         <content type="html"><![CDATA[<h1 id="1递归与分治">1.递归与分治</h1>
+<h3 id="概述">概述</h3>
+<p>分治法：通过求解局部性的小问题来解开原本的问题。<br>
+分治步骤：</p>
+<ol>
+<li>将问题分割成局部问题</li>
+<li>递归求解局部问题</li>
+<li>将局部问题进行整合，解决原问题</li>
+</ol>
+<h1 id="2穷举搜索">2.穷举搜索</h1>
+<h3 id="概述-2">概述</h3>
+<p>对于穷举搜索来说，每一个元素都有选和不选两种选择</p>
+<h3 id="线性搜索问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_A">线性搜索问题描述</a></h3>
+<h3 id="代码实现">代码实现</h3>
+<pre><code class="language-C++">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+
+int n;
+int A[50];
+
+int solve(int i , int m) {
+	if (m == 0) return 1;
+	if (i &gt;- n) return 0;
+	int res = solve(i + 1, m) || solve(i + 1, m - A[i]);
+	return res;
+}
+
+
+int main() {
+	int q, M;
+	scanf(&quot;%d&quot;, &amp;n);
+	for (int i = 0; i &lt; n; i++) {
+		scanf(&quot;%d&quot;, &amp;A[i]);
+	}
+	scanf(&quot;%d&quot;, &amp;q);
+	for (int i = 0; i &lt; q; i++) {
+		scanf(&quot;%d&quot;, &amp;M);
+		if (solve(0, M) == 1) printf(&quot;YES\n&quot;);
+		else printf(&quot;NO\n&quot;);
+	}	
+	return 0;
+}
+</code></pre>
+<h3 id="算法解析">算法解析</h3>
+<p>solve(int i, int m) 表示用第i个元素后面的元素能得到m时返回true。<br>
+这样做的好处是，能够把solve(i, m)分解成solve(i+1, m)和solve(i+1, m-A[i])， m-A[i]表示使用了第i个元素。<br>
+最后递归的原问题是solve(0, m)。</p>
+<blockquote>
+<p>递归会多次进行计算solve(i, m)，这样会有很多重复计算，我们通过动态规划可以解决这个问题。</p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>

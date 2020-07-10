@@ -90,7 +90,7 @@
                         <input id="switch_default" type="checkbox" class="switch_default">
                         <label for="switch_default" class="toggleBtn"></label>
             </div>
-            <form id="gridea-search-form" data-update="1594351551132" action="/search/index.html">
+            <form id="gridea-search-form" data-update="1594358655647" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
             </form>
         </div>
@@ -109,7 +109,7 @@
                         <!--zh-->
                         <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
                     </div>
-                    <form id="gridea-search-form" data-update="1594351551132" action="/search/index.html">
+                    <form id="gridea-search-form" data-update="1594358655647" action="/search/index.html">
                         <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
                     </form>
                     <!--en-->
@@ -192,9 +192,9 @@
                                 Date: <a href="#">2020-07-09</a>
                             </span>
                                     <span class="post-readtime">Reading Time:<a
-                                    href="#">0.0
+                                    href="#">1.5
                                     mins</a></span>
-                                    <span class="post-words">words:<a href="#">6</a></span>
+                                    <span class="post-words">words:<a href="#">337</a></span>
                                     
                                         <span class="post-category">
                                 Category:
@@ -209,6 +209,57 @@
                         
                         <div class="post-content">
                             <h1 id="1递归与分治">1.递归与分治</h1>
+<h3 id="概述">概述</h3>
+<p>分治法：通过求解局部性的小问题来解开原本的问题。<br>
+分治步骤：</p>
+<ol>
+<li>将问题分割成局部问题</li>
+<li>递归求解局部问题</li>
+<li>将局部问题进行整合，解决原问题</li>
+</ol>
+<h1 id="2穷举搜索">2.穷举搜索</h1>
+<h3 id="概述-2">概述</h3>
+<p>对于穷举搜索来说，每一个元素都有选和不选两种选择</p>
+<h3 id="线性搜索问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_A">线性搜索问题描述</a></h3>
+<h3 id="代码实现">代码实现</h3>
+<pre><code class="language-C++">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+
+int n;
+int A[50];
+
+int solve(int i , int m) {
+	if (m == 0) return 1;
+	if (i &gt;- n) return 0;
+	int res = solve(i + 1, m) || solve(i + 1, m - A[i]);
+	return res;
+}
+
+
+int main() {
+	int q, M;
+	scanf(&quot;%d&quot;, &amp;n);
+	for (int i = 0; i &lt; n; i++) {
+		scanf(&quot;%d&quot;, &amp;A[i]);
+	}
+	scanf(&quot;%d&quot;, &amp;q);
+	for (int i = 0; i &lt; q; i++) {
+		scanf(&quot;%d&quot;, &amp;M);
+		if (solve(0, M) == 1) printf(&quot;YES\n&quot;);
+		else printf(&quot;NO\n&quot;);
+	}	
+	return 0;
+}
+</code></pre>
+<h3 id="算法解析">算法解析</h3>
+<p>solve(int i, int m) 表示用第i个元素后面的元素能得到m时返回true。<br>
+这样做的好处是，能够把solve(i, m)分解成solve(i+1, m)和solve(i+1, m-A[i])， m-A[i]表示使用了第i个元素。<br>
+最后递归的原问题是solve(0, m)。</p>
+<blockquote>
+<p>递归会多次进行计算solve(i, m)，这样会有很多重复计算，我们通过动态规划可以解决这个问题。</p>
+</blockquote>
 
                         </div>
                         
@@ -239,8 +290,8 @@
                                                     <i class="post-share"></i>
                                                     <span>Share:</span>
                                                         <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lesenelir.github.io/post/recursion-and-divide-and-conquer/"><i class="fa fa-qrcode"></i></a>
-                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lesenelir.github.io/post/recursion-and-divide-and-conquer/&sharesource=qzone&title=Recursion &amp; Divide and Conquer&pics=https://lesenelir.github.io//images/avatar.png?v=1594351551132&summary="><i class="fa fa-qq"></i></a>
-                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://lesenelir.github.io/post/recursion-and-divide-and-conquer/&sharesource=weibo&title=Recursion &amp; Divide and Conquer + " - " + &pic="https://lesenelir.github.io//images/avatar.png?v=1594351551132 "><i class="fa fa-weibo "></i></a>
+                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lesenelir.github.io/post/recursion-and-divide-and-conquer/&sharesource=qzone&title=Recursion &amp; Divide and Conquer&pics=https://lesenelir.github.io//images/avatar.png?v=1594358655647&summary="><i class="fa fa-qq"></i></a>
+                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://lesenelir.github.io/post/recursion-and-divide-and-conquer/&sharesource=weibo&title=Recursion &amp; Divide and Conquer + " - " + &pic="https://lesenelir.github.io//images/avatar.png?v=1594358655647 "><i class="fa fa-weibo "></i></a>
                                                         
                                                                 </span>
 
@@ -483,7 +534,7 @@
                     CheckVersion();
                     
                     var newDate = new Date();
-                    newDate.setTime(1594351551132);
+                    newDate.setTime(1594358655647);
                     console.log(" Blog Update Time: " + newDate.toLocaleDateString());
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>
