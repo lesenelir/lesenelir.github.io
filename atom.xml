@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lesenelir.github.io/</id>
     <title>Lesenelir</title>
-    <updated>2020-07-12T03:44:08.025Z</updated>
+    <updated>2020-07-12T04:04:07.949Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lesenelir.github.io/"/>
     <link rel="self" href="https://lesenelir.github.io/atom.xml"/>
@@ -10,6 +10,33 @@
     <logo>https://lesenelir.github.io/images/avatar.png</logo>
     <icon>https://lesenelir.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Lesenelir</rights>
+    <entry>
+        <title type="html"><![CDATA[Golang String Operation]]></title>
+        <id>https://lesenelir.github.io/post/golang-string-operation/</id>
+        <link href="https://lesenelir.github.io/post/golang-string-operation/">
+        </link>
+        <updated>2020-07-12T04:00:11.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="长度">长度</h3>
+<p><code>len(str)</code></p>
+<pre><code class="language-golang">    var str1 string = &quot;hello str1&quot;
+	var str2 = &quot;hello str2&quot;
+	str3 := &quot;hello str3&quot;
+	fmt.Printf(&quot;%v--%T\n&quot;, str1, str1)
+</code></pre>
+<h3 id="拼接">拼接</h3>
+<p><code>+, fmt.Sprintf</code></p>
+<h3 id="分割">分割</h3>
+<p><code>strings.Split</code></p>
+<h3 id="包含">包含</h3>
+<p><code>strings.Contains</code></p>
+<h3 id="前缀或后缀判断">前缀或后缀判断</h3>
+<p><code>strings.HasPrefix, strings.HasSuffix</code></p>
+<h3 id="子串出现的位置">子串出现的位置</h3>
+<p><code>strings.Index(), strings.LastIndex()</code></p>
+<h3 id="join操作">join操作</h3>
+<p><code>strings.Join(a[]string, sep string)</code></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Binary Search Tree ]]></title>
         <id>https://lesenelir.github.io/post/binary-search-tree/</id>

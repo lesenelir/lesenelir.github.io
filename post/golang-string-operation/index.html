@@ -179,7 +179,7 @@
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title">
-                                Tree Algorithm
+                                Golang String Operation
                             </h1>
                             
                                 <!--en-->
@@ -189,290 +189,37 @@
                                         Lesenelir
                                     </a>
                                     <span class="post-time">
-                                Date: <a href="#">2020-07-11</a>
+                                Date: <a href="#">2020-07-12</a>
                             </span>
                                     <span class="post-readtime">Reading Time:<a
-                                    href="#">7.0
+                                    href="#">0.4
                                     mins</a></span>
-                                    <span class="post-words">words:<a href="#">1344</a></span>
+                                    <span class="post-words">words:<a href="#">74</a></span>
                                     
-                                        <span class="post-category">
-                                Category:
-                                
-                                <a href="https://lesenelir.github.io/tag/DOoQsvsid/">Data Structure and Algorithm</a>
-                                
-                            </span>
-                                        
                                 </div>
                                 
                         </header>
                         
                         <div class="post-content">
-                            <h1 id="1有根树的表达">1.有根树的表达</h1>
-<h3 id="概念">概念</h3>
-<p>结点深度：根结点到结点x的路径长度称为结点x的深度。<br>
-结点高度：结点x到叶结点最大路径长度称为结点x的高。<br>
-树高：从根结点到叶子结点最大路径长度。<br>
-结点的度：结点x的子结点的数目。</p>
-<h3 id="有根树表达问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_7_A">有根树表达问题描述</a></h3>
-<h3 id="代码实现">代码实现</h3>
-<pre><code class="language-C++">#include &lt;cstdio&gt;
-#include &lt;iostream&gt;
-using namespace std;
-
-const int maxn = 100001;
-const int NIL = -1;
-
-
-struct Node {
-	int p, l, r;
-} T[maxn];
-
-int n;
-int D[maxn]; // 深度数组
-
-void print(int u) {
-	printf(&quot;node %d: parent = %d, depth = %d, &quot;, u, T[u].p, D[u]);
-	
-	if (T[u].p == NIL) printf(&quot;root, &quot;);
-	else if (T[u].l == NIL) printf(&quot;leaf, &quot;); // 不存在最左侧的结点
-	else printf(&quot;internal node, &quot;);
-	
-	printf(&quot;[&quot;);
-	for (int i = 0, c = T[u].l; c != NIL; i++, c = T[c].r) {
-		if (i) printf(&quot;, &quot;);
-		printf(&quot;%d&quot;, c);
-	}
-	printf(&quot;]\n&quot;);
-}
-
-// 递归求深度，保存在D数组中
-int setDepth(int u, int p) {
-	D[u] = p;
-	if (T[u].r != NIL) setDepth(T[u].r, p); // 右侧兄弟设置相同深度
-	if (T[u].l != NIL) setDepth(T[u].l, p + 1); // 左侧子结点深度设置为自己深度+1
-}
-
-int main() {
-	int n;
-	while (scanf(&quot;%d&quot;, &amp;n) != EOF) {
-		for (int i = 0; i &lt; n; i++) {
-			T[i].p = T[i].l = T[i].r = NIL;
-		}
-		int v, d, c, l, r;
-		for (int i = 0; i &lt; n; i++) {
-			scanf(&quot;%d %d&quot;, &amp;v, &amp;d);
-			for (int j = 0; j &lt; d; j++) {
-				scanf(&quot;%d&quot;, &amp;c);
-				if (j == 0) T[v].l = c; // j==0叶子结点设置它的最左结点
-				else T[l].r = c;
-				l = c;
-				T[c].p = v;
-			}
-		}
-		for (int i = 0; i &lt; n; i++) {
-			if (T[i].p == NIL) r = i;
-		}
-		
-		setDepth(r, 0);
-		for (int i = 0; i &lt; n; i++) {
-			print(i);
-		}
-	}
-	return 0;
-}
+                            <h3 id="长度">长度</h3>
+<p><code>len(str)</code></p>
+<pre><code class="language-golang">    var str1 string = &quot;hello str1&quot;
+	var str2 = &quot;hello str2&quot;
+	str3 := &quot;hello str3&quot;
+	fmt.Printf(&quot;%v--%T\n&quot;, str1, str1)
 </code></pre>
-<h3 id="算法解析">算法解析</h3>
-<ul>
-<li>存储有根树 -----&gt; 左子右孩子表示法<br>
-结点u的父节点<br>
-结点u最左侧的子结点<br>
-结点u右侧紧邻的兄弟结点<br>
-此时，不存在u.l的就是叶子结点</li>
-</ul>
-<blockquote>
-<p>假设树高为h，则从各结点出发求深度（寻找父结点）算法复杂度是O(n)，求所有结点的深度算法复杂度是O(nh)</p>
-</blockquote>
-<h1 id="2二叉树的表达">2.二叉树的表达</h1>
-<h3 id="概念-2">概念</h3>
-<p>二叉树所有结点的度（结点子结点的个数）最多2，且二叉树严格区分左右子结点。</p>
-<h3 id="二叉树表达问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_7_B">二叉树表达问题描述</a></h3>
-<h3 id="代码实现-2">代码实现</h3>
-<pre><code class="language-C++">#include &lt;cstdio&gt;
-#include &lt;iostream&gt;
-using namespace std;
-
-const int maxn = 100001;
-const int NIL = -1;
-
-struct Node {
-	int parent, left, right;
-} T[maxn];
-
-int n, D[maxn], H[maxn]; // 深度数组，高度数组
-
-void setDepth(int u, int d) {
-	if (u == NIL) return;
-	D[u] = d;
-	setDepth(T[u].left, d + 1);
-	setDepth(T[u].right, d + 1);
-}
-
-int setHeight(int u) {
-	int h1 = 0, h2 = 0;
-	if (T[u].left != NIL) h1 = setHeight(T[u].left) + 1;
-	if (T[u].right != NIL) h2 = setHeight(T[u].right) + 1;
-	return H[u] = (h1 &gt; h2 ? h1 : h2);
-}
-
-// 返回结点u的兄弟结点
-int getSibling(int u) {
-	if (T[u].parent == NIL) return NIL;
-	if (T[T[u].parent].left != u &amp;&amp; T[T[u].parent].left != NIL) 
-		return T[T[u].parent].left;
-	if (T[T[u].parent].right != u &amp;&amp; T[T[u].parent].right != NIL) 
-		return T[T[u].parent].right;
-	return NIL;
-}
-
-
-void print(int u) {
-	printf(&quot;node %d: &quot;, u);
-	printf(&quot;parent = %d, &quot;, T[u].parent);
-	printf(&quot;sibling = %d, &quot;, getSibling(u));
-	int deg = 0; // 度数
-	if (T[u].left != NIL) deg++;
-	if (T[u].right != NIL) deg++;
-	printf(&quot;degree = %d, &quot;, deg);
-	printf(&quot;depth = %d, &quot;, D[u]);
-	printf(&quot;height = %d, &quot;, H[u]);
-	
-	if (T[u].parent == NIL) {
-		printf(&quot;root\n&quot;);
-	} else if (T[u].left == NIL &amp;&amp; T[u].right == NIL) {
-		printf(&quot;leaf\n&quot;);
-	} else {
-		printf(&quot;internal node\n&quot;);
-	}
-}
-
-
-int main() {
-	while (scanf(&quot;%d&quot;, &amp;n) != EOF) {
-		for (int i = 0; i &lt; n; i++) T[i].parent = NIL;
-		
-		int v, l, r, root = 0;
-		for (int i = 0; i &lt; n; i++) {
-			scanf(&quot;%d %d %d&quot;, &amp;v, &amp;l, &amp;r);
-			T[v].left = l;
-			T[v].right = r;
-			if (l != NIL) T[l].parent = v;
-			if (r != NIL) T[r].parent = v;
-		}
-		
-		for (int i = 0; i &lt; n; i++) {
-			if (T[i].parent == NIL) root = i;
-		}	
-		
-		setDepth(root, 0);
-		setHeight(root);
-		
-		for (int i = 0; i &lt; n; i++) {
-			print(i);
-		}
-		
-	}
-	return 0;
-}
-</code></pre>
-<h3 id="算法解析-2">算法解析</h3>
-<p>计算结点高度（往下求最长路径），只需要计算出“左子结点高 + 1” 和 “右子结点高 + 1”，然后取最大值即可。</p>
-<blockquote>
-<p>求结点高度的算法复杂度是O(n)</p>
-</blockquote>
-<h1 id="3树的遍历">3.树的遍历</h1>
-<h3 id="概念-3">概念</h3>
-<ul>
-<li>前序遍历：根结点-&gt;左子树-&gt;右子树</li>
-<li>中序遍历：左子树-&gt;根结点-&gt;右子树</li>
-<li>后序遍历：左子树-&gt;右子树-&gt;根结点</li>
-</ul>
-<h3 id="树的遍历问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_7_B">树的遍历问题描述</a></h3>
-<h3 id="代码实现-3">代码实现</h3>
-<pre><code class="language-C++">#include &lt;cstdio&gt;
-#include &lt;iostream&gt;
-using namespace std;
-
-const int maxn = 100001;
-const int NIL = -1;
-
-struct Node {
-	int p, l, r;
-} T[maxn];
-
-int n;
-
-
-void preOrder(int u) {
-	if (u == NIL) return;
-	printf(&quot; %d&quot;, u);
-	preOrder(T[u].l);
-	preOrder(T[u].r);
-}
-
-void inOrder(int u) {
-	if (u == NIL) return;
-	inOrder(T[u].l);
-	printf(&quot; %d&quot;, u);
-	inOrder(T[u].r);
-}
-
-void postOrder(int u) {
-	if (u == NIL) return;
-	postOrder(T[u].l);
-	postOrder(T[u].r);
-	printf(&quot; %d&quot;, u);
-}
-
-
-int main() {
-	int v, l, r, root;
-	while (scanf(&quot;%d&quot;, &amp;n) != EOF) {
-		for (int i = 0; i &lt; n; i++) { // 初始化
-			T[i].p = NIL;
-		}	
-		
-		for (int i = 0; i &lt; n; i++) {
-			scanf(&quot;%d %d %d&quot;, &amp;v, &amp;l, &amp;r);
-			T[v].l = l;
-			T[v].r = r;
-			if (l != NIL) T[l].p = v;
-			if (r != NIL) T[r].p = v;
-		}
-		
-		for (int i = 0; i &lt; n; i++) {
-			if (T[i].p == NIL) root = i;
-		}
-		printf(&quot;PreOrder\n&quot;);
-		preOrder(root);
-		printf(&quot;\n&quot;);
-		
-		printf(&quot;InOrder\n&quot;);
-		inOrder(root);
-		printf(&quot;\n&quot;);
-		
-		printf(&quot;PostOrder\n&quot;);
-		postOrder(root);
-		printf(&quot;\n&quot;);
-	}
-	return 0;
-}
-</code></pre>
-<h3 id="算法解析-3">算法解析</h3>
-<blockquote>
-<p>树的遍历会对每一个结点进行一次访问，故算法复杂度为O(n)。<br>
-使用递归算法要注意，一旦树的结点数量庞大且分布不均，会导致递归深度过深。</p>
-</blockquote>
+<h3 id="拼接">拼接</h3>
+<p><code>+, fmt.Sprintf</code></p>
+<h3 id="分割">分割</h3>
+<p><code>strings.Split</code></p>
+<h3 id="包含">包含</h3>
+<p><code>strings.Contains</code></p>
+<h3 id="前缀或后缀判断">前缀或后缀判断</h3>
+<p><code>strings.HasPrefix, strings.HasSuffix</code></p>
+<h3 id="子串出现的位置">子串出现的位置</h3>
+<p><code>strings.Index(), strings.LastIndex()</code></p>
+<h3 id="join操作">join操作</h3>
+<p><code>strings.Join(a[]string, sep string)</code></p>
 
                         </div>
                         
@@ -487,7 +234,7 @@ int main() {
 
                                             <p class="copyright-item">
                                                 <span>Permalink:</span>
-                                                <span><a href="https://lesenelir.github.io/post/tree-algorithm/">https://lesenelir.github.io/post/tree-algorithm/</a></span>
+                                                <span><a href="https://lesenelir.github.io/post/golang-string-operation/">https://lesenelir.github.io/post/golang-string-operation/</a></span>
                                             </p>
 
                                             <p class="copyright-item">
@@ -502,9 +249,9 @@ int main() {
                                                         <span style="margin-right:15px">
                                                     <i class="post-share"></i>
                                                     <span>Share:</span>
-                                                        <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lesenelir.github.io/post/tree-algorithm/"><i class="fa fa-qrcode"></i></a>
-                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lesenelir.github.io/post/tree-algorithm/&sharesource=qzone&title=Tree Algorithm&pics=https://lesenelir.github.io//images/avatar.png?v=1594526644180&summary="><i class="fa fa-qq"></i></a>
-                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://lesenelir.github.io/post/tree-algorithm/&sharesource=weibo&title=Tree Algorithm + " - " + &pic="https://lesenelir.github.io//images/avatar.png?v=1594526644180 "><i class="fa fa-weibo "></i></a>
+                                                        <a title="QR Code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lesenelir.github.io/post/golang-string-operation/"><i class="fa fa-qrcode"></i></a>
+                                                        <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://lesenelir.github.io/post/golang-string-operation/&sharesource=qzone&title=Golang String Operation&pics=https://lesenelir.github.io//images/avatar.png?v=1594526644180&summary="><i class="fa fa-qq"></i></a>
+                                                        <a title="Weibo" target="_blank" href="https://service.weibo.com/share/share.php?url=https://lesenelir.github.io/post/golang-string-operation/&sharesource=weibo&title=Golang String Operation + " - " + &pic="https://lesenelir.github.io//images/avatar.png?v=1594526644180 "><i class="fa fa-weibo "></i></a>
                                                         
                                                                 </span>
 
@@ -515,12 +262,6 @@ int main() {
                                                                         <span>Tag(s):</span>
                                                                         <span class="tag ">
                         
-                        
-                        <a href="https://lesenelir.github.io/tag/DOoQsvsid/">#
-                                                Data Structure and Algorithm
-                                                    </a>
-                                                    
-                                                        
                                                             </span>
                                                                     </div>
                                                                     <div>
@@ -535,13 +276,9 @@ int main() {
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://lesenelir.github.io/post/binary-search-tree/">
-                                                                                            Binary Search Tree 
-                                                                                        </a>
-                                                                                        
                                                                                             
-                                                                                                <a class="next" rel="next" href="https://lesenelir.github.io/post/recursion-and-divide-and-conquer/">
-                                                                                                    Recursion &amp; Divide and Conquer
+                                                                                                <a class="next" rel="next" href="https://lesenelir.github.io/post/binary-search-tree/">
+                                                                                                    Binary Search Tree 
                                                                                                 </a>
                                                                                                 
                                                                                 </section>
