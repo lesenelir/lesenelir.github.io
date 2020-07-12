@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lesenelir.github.io/</id>
     <title>Lesenelir</title>
-    <updated>2020-07-12T04:04:07.949Z</updated>
+    <updated>2020-07-12T04:06:01.968Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lesenelir.github.io/"/>
     <link rel="self" href="https://lesenelir.github.io/atom.xml"/>
@@ -18,7 +18,7 @@
         <updated>2020-07-12T04:00:11.000Z</updated>
         <content type="html"><![CDATA[<h3 id="长度">长度</h3>
 <p><code>len(str)</code></p>
-<pre><code class="language-golang">    var str1 string = &quot;hello str1&quot;
+<pre><code class="language-go">    var str1 string = &quot;hello str1&quot;
 	var str2 = &quot;hello str2&quot;
 	str3 := &quot;hello str3&quot;
 	fmt.Printf(&quot;%v--%T\n&quot;, str1, str1)
