@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://lesenelir.github.io/</id>
     <title>Lesenelir</title>
-    <updated>2020-07-11T05:46:45.369Z</updated>
+    <updated>2020-07-12T03:44:08.025Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://lesenelir.github.io/"/>
     <link rel="self" href="https://lesenelir.github.io/atom.xml"/>
@@ -10,6 +10,270 @@
     <logo>https://lesenelir.github.io/images/avatar.png</logo>
     <icon>https://lesenelir.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Lesenelir</rights>
+    <entry>
+        <title type="html"><![CDATA[Binary Search Tree ]]></title>
+        <id>https://lesenelir.github.io/post/binary-search-tree/</id>
+        <link href="https://lesenelir.github.io/post/binary-search-tree/">
+        </link>
+        <updated>2020-07-12T02:10:07.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="1二叉搜索树">1.二叉搜索树</h1>
+<h3 id="概念">概念</h3>
+<p>二叉搜索树：左子树结点值 &lt; 父结点值 &lt; 右子树结点值</p>
+<blockquote>
+<p>对于二叉搜索树来说，中序遍历能得到一个升序排列。</p>
+</blockquote>
+<h1 id="2二叉搜索树-插入">2.二叉搜索树---插入</h1>
+<h3 id="二叉搜索树插入问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_A">二叉搜索树插入问题描述</a></h3>
+<h3 id="代码实现">代码实现</h3>
+<pre><code class="language-C++">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+struct Node {
+	int key;
+	Node *right, *left, *parent;	
+};
+
+Node *root, *NIL;
+
+void insert(int k) {
+	Node *y = NIL; // 前一个结点
+	Node *x = root; // 当前结点
+	Node *z; // 插入结点
+	
+	z = (Node *)malloc(sizeof(Node)); // 待插入结点一定是叶子结点
+	z-&gt;key = k;
+	z-&gt;left = NIL;
+	z-&gt;right = NIL;
+	
+	while (x != NIL) {
+		y = x;
+		if (z-&gt;key &lt; x-&gt;key) {
+			x = x-&gt;left;
+		} else {
+			x = x-&gt;right;
+		}
+	}
+	z-&gt;parent = y;
+	
+	if (y == NIL) { //插入前的二叉树为空，z即为根结点
+		root = z; 
+	} else {
+		if (z-&gt; key &lt; y-&gt;key) {
+			y-&gt;left = z;
+		} else {
+			y-&gt;right = z;
+		}
+	}	
+}
+
+void inOrder(Node *u) {
+	if (u == NIL) return;
+	inOrder(u-&gt;left);
+	printf(&quot; %d&quot;, u-&gt;key);
+	inOrder(u-&gt;right);
+}
+
+void preOrder(Node *u) {
+	if (u == NIL) return;
+	printf(&quot; %d&quot;, u-&gt;key);
+	preOrder(u-&gt;left);
+	preOrder(u-&gt;right);
+}
+
+
+int main() {
+	int n;
+	while (scanf(&quot;%d&quot;, &amp;n) != EOF) {
+		int x;
+		string com;		
+		for (int i = 0; i &lt; n; i++) {
+			cin &gt;&gt; com;
+			if (com == &quot;insert&quot;) {
+				scanf(&quot;%d&quot;, &amp;x);
+				insert(x);
+			} else if (com == &quot;print&quot;) {
+				inOrder(root);
+				printf(&quot;\n&quot;);
+				preOrder(root);
+				printf(&quot;\n&quot;);
+			}
+		}		
+	}
+	return 0;
+}
+</code></pre>
+<h3 id="算法解析">算法解析</h3>
+<p>insert()函数以根结点为起点寻找结点z该插入的位置。<br>
+当前结点x<br>
+前一个结点y<br>
+插入结点z</p>
+<blockquote>
+<p>二叉搜索树插入的结点一定是叶子结点。<br>
+算法复杂度是O(logn)</p>
+</blockquote>
+<h1 id="3二叉搜索树-搜索">3.二叉搜索树---搜索</h1>
+<h3 id="二叉搜索树搜索问题描述"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_B">二叉搜索树搜索问题描述</a></h3>
+<h3 id="代码实现-2">代码实现</h3>
+<pre><code class="language-C++">#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+struct Node {
+	int key;
+	Node *left, *right, *parent;
+};
+
+Node *root, *NIL;
+
+// 搜索算法
+Node *find_key(Node *x, int k) {
+	while ( x != NIL &amp;&amp; k != x-&gt;key) {
+		if (k &lt; x-&gt;key) x = x-&gt;left;
+		else x = x-&gt;right;
+	}
+	return x;
+}
+
+void insert(int k) {
+	Node *y = NIL; // 前一个结点
+	Node *x = root; // 当前结点
+	Node *z; // 插入结点
+	
+	z = (Node *)malloc(sizeof(Node)); // 待插入结点一定是叶子结点
+	z-&gt;key = k;
+	z-&gt;left = NIL;
+	z-&gt;right = NIL;
+	
+	while (x != NIL) {
+		y = x;
+		if (z-&gt;key &lt; x-&gt;key) {
+			x = x-&gt;left;
+		} else {
+			x = x-&gt;right;
+		}
+	}
+	z-&gt;parent = y;
+	
+	if (y == NIL) { //插入前的二叉树为空，z即为根结点
+		root = z; 
+	} else {
+		if (z-&gt; key &lt; y-&gt;key) {
+			y-&gt;left = z;
+		} else {
+			y-&gt;right = z;
+		}
+	}	
+}
+
+void inOrder(Node *u) {
+	if (u == NIL) return;
+	inOrder(u-&gt;left);
+	printf(&quot; %d&quot;, u-&gt;key);
+	inOrder(u-&gt;right);
+}
+
+void preOrder(Node *u) {
+	if (u == NIL) return;
+	printf(&quot; %d&quot;, u-&gt;key);
+	preOrder(u-&gt;left);
+	preOrder(u-&gt;right);
+}
+
+int main() {
+	int n;
+	while (scanf(&quot;%d&quot;, &amp;n) != EOF) {
+		int x;
+		string com;
+		for (int i = 0; i &lt; n; i++) {
+			cin &gt;&gt; com;
+			if (com == &quot;find&quot;) {
+				scanf(&quot;%d&quot;, &amp;x);
+				Node *temp = find_key(root, x);
+				if (temp != NIL) printf(&quot;YES\n&quot;);
+				else printf(&quot;NO\n&quot;);
+			} else if (com == &quot;insert&quot;) {
+				scanf(&quot;%d&quot;, &amp;x);
+				insert(x);
+			} else if (com == &quot;print&quot;) {
+				inOrder(root);
+				printf(&quot;\n&quot;);
+				preOrder(root);
+				printf(&quot;\n&quot;);
+			}
+		}
+	}
+	return 0;
+}
+</code></pre>
+<h3 id="算法解析-2">算法解析</h3>
+<p>Node *find_key(Node *x, int k) 以根结点为起点调用函数，从根结点向叶结点搜索。<br>
+给定键值小于当前结点x的键值，则左移；给定键值大于当前结点x的键值，则右移。<br>
+键值不存在则返回NIL。</p>
+<blockquote>
+<p>假设树高为h，则find算法复杂度为O(h)</p>
+</blockquote>
+<h1 id="4二叉搜索树-删除">4.二叉搜索树---删除</h1>
+<h3 id="二叉搜索树搜索问题描述-2"><a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_C">二叉搜索树搜索问题描述</a></h3>
+<h3 id="代码实现-3">代码实现</h3>
+<pre><code class="language-C++">// 树的最小值
+Node *treeMinimum(Node * x) {
+    while (x-&gt;left != NIL) {
+        x = x-&gt;left;
+    }
+    return x;
+}
+
+// case 3 ,搜索后一个结点
+Node *treeSuccessor(Node *x) {
+    if (x-&gt;right != NIL)
+        return treeMinimum(x-&gt;right);
+
+    Node *y = x-&gt;parent;
+    while (y != NIL &amp;&amp; x == y-&gt;right) {
+        x = y;
+        x = y-&gt;parent;
+    }
+    return y;
+}
+
+void treeDelete(Node * z) {
+    Node *y, *x;  // 要删除的对象和y的子结点
+
+    // 确定要删除的结点
+    if (z-&gt;left == NIL || z-&gt;right == NIL) y = z;
+    else {
+        y = treeSuccessor(z);
+    }
+
+    // 确定y的子结点x
+    if (y-&gt;left != NIL) x = y-&gt;left;
+    else x = y-&gt;right;
+
+    // 让子结点链接父结点
+    if (x != NIL) x-&gt;parent = y-&gt;parent;
+
+    // 让父结点链接子结点
+    if (y-&gt;parent == NIL) root = x;
+    else {
+        if (y == y-&gt;parent-&gt;left)
+            y-&gt;parent-&gt;left = x;
+        else
+            y-&gt;parent-&gt;right = x;
+    }
+
+    // case 3
+    if (y != z) z-&gt;key = y-&gt;key;
+    delete y;
+}
+</code></pre>
+<h3 id="算法解析-3">算法解析</h3>
+<p>删除功能需要考虑三种情况，假设删除的结点为x<br>
+（1）x没有子结点，则将x结点删除即可。<br>
+（2）如果x只有左子树或者只有右子树，则将子树拼接上父结点即可.<br>
+（3）如果同时具有左右子树。可以将结点x的左子树的最大值（也就是左子树一直往右孩子节点遍历即是最大值）或者右子树的最小值（也就是右子树一直往左孩子节点遍历即是最小值）替换x，然后拼接左子树或者右子树</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Tree Algorithm]]></title>
         <id>https://lesenelir.github.io/post/tree-algorithm/</id>
